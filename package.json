@@ -1,7 +1,7 @@
 {
   "name": "@cronbeats/cronbeats-node",
-  "version": "0.1.2",
-  "description": "Official CronBeats Ping SDK for Node.js",
+  "version": "0.1.3",
+  "description": "Cron job monitoring and heartbeat monitoring SDK for Node.js. Monitor scheduled tasks, background jobs, and cron jobs with simple ping telemetry. Get alerts when cron jobs fail, miss their schedule, or run too long.",
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -19,11 +19,22 @@
     "node": ">=18"
   },
   "keywords": [
-    "cronbeats",
     "cron",
     "monitoring",
-    "sdk",
-    "ping"
+    "cron monitoring",
+    "cron job monitoring",
+    "heartbeat",
+    "heartbeat monitoring",
+    "ping",
+    "ping telemetry",
+    "scheduler",
+    "scheduled tasks",
+    "background jobs",
+    "job monitoring",
+    "alerting",
+    "cron alerts",
+    "devops",
+    "cronbeats"
   ],
   "repository": {
     "type": "git",
