@@ -1,5 +1,8 @@
 # CronBeats Node SDK (Ping)
 
+[![npm version](https://img.shields.io/npm/v/@cronbeats/cronbeats-node)](https://www.npmjs.com/package/@cronbeats/cronbeats-node)
+[![downloads](https://img.shields.io/npm/dt/@cronbeats/cronbeats-node)](https://www.npmjs.com/package/@cronbeats/cronbeats-node)
+
 Official Node.js SDK for CronBeats ping telemetry.
 
 ## Install (local/dev)

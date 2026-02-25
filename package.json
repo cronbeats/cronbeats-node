@@ -25,6 +25,14 @@
     "sdk",
     "ping"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cronbeats/cronbeats-node.git"
+  },
+  "homepage": "https://github.com/cronbeats/cronbeats-node#readme",
+  "bugs": {
+    "url": "https://github.com/cronbeats/cronbeats-node/issues"
+  },
   "license": "MIT",
   "devDependencies": {
     "@types/node": "^22.13.10",
