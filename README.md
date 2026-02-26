@@ -36,15 +36,74 @@ await client.start();
 await client.success();
 ```
 
-## Progress Examples
+## Progress Tracking
+
+Track your job's progress in real-time. CronBeats supports two distinct modes:
+
+### Mode 1: With Percentage (0-100)
+Shows a **progress bar** and your status message on the dashboard.
+
+✓ **Use when**: You can calculate meaningful progress (e.g., processed 750 of 1000 records)
 
 ```ts
-await client.progress(50, "Processing batch 50/100");
+// Percentage mode: 0-100 with message
+await client.progress(50, "Processing batch 500/1000");
 
+// Or using options object
 await client.progress({
   seq: 75,
-  message: "Almost done",
+  message: "Almost done - 750/1000",
 });
+```
+
+### Mode 2: Message Only
+Shows **only your status message** (no percentage bar) on the dashboard.
+
+✓ **Use when**: Progress isn't measurable or you only want to send status updates
+
+```ts
+// Message-only mode: null seq, just status updates
+await client.progress(null, "Connecting to database...");
+await client.progress(null, "Starting data sync...");
+```
+
+### What you see on the dashboard
+- **Mode 1**: Progress bar (0-100%) + your message → "75% - Processing batch 750/1000"
+- **Mode 2**: Only your status message → "Connecting to database..."
+
+### Complete Example
+
+```ts
+import { PingClient } from "@cronbeats/cronbeats-node";
+
+const client = new PingClient("abc123de");
+await client.start();
+
+try {
+  // Message-only updates for non-measurable steps
+  await client.progress(null, "Connecting to database...");
+  const db = await connectToDatabase();
+  
+  await client.progress(null, "Fetching records...");
+  const total = await db.count();
+  
+  // Percentage updates for measurable progress
+  for (let i = 0; i < total; i++) {
+    await processRecord(i);
+    
+    if (i % 100 === 0) {
+      const percent = Math.floor((i * 100) / total);
+      await client.progress(percent, `Processed ${i} / ${total} records`);
+    }
+  }
+  
+  await client.progress(100, "All records processed");
+  await client.success();
+  
+} catch (err) {
+  await client.fail();
+  throw err;
+}
 ```
 
 ## Error Handling
